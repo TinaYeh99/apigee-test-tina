@@ -89,7 +89,6 @@ steps:
         if [ "$_API_VERSION" = "apigee" ]
         then
           source env.txt && \
-          mvn clean install -ntp \
             -P"apigeeapi" \
             -Denv="$${APIGEE_ENV}" \
             -Dpassword="$${APIGEE_BUILD_PASS}" \
@@ -99,7 +98,6 @@ steps:
             -Ddeployment.description="CloudRun Build: $BUILD_ID"
         else
           source env.txt && \
-          mvn clean install -ntp \
             -P"googleapi" \
             -Denv="$${APIGEE_ENV}" \
             -Dtoken="$${APIGEE_BUILD_TOKEN}" \
@@ -139,6 +137,6 @@ substitutions:
   # Management API version use:
   # 'apigee' for current Apigee Edge
   # 'google' for Apigee X and hybrid
-  _API_VERSION: api #apigee|google
+  _API_VERSION: apigee #apigee|google
   # Host name for the integration test
   _INT_TEST_HOST: org-env.apigee.net
